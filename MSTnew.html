@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mst E-Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #0056b3;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #007BFF;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        .course {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .course img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+
+        .course-info {
+            flex-grow: 1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #0056b3;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Mst E-Learning</h1>
+    <p>Your gateway to IT education</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#about">About Us</a>
+            <ul>
+                <li><a href="#about">Company Overview</a></li>
+            </ul>
+        </li>
+        <li><a href="#courses">Courses</a>
+            <ul>
+                <li><a href="#courses">Available Courses</a></li>
+            </ul>
+        </li>
+        <li><a href="#feedback">Feedback</a>
+            <ul>
+                <li><a href="#feedback">Student Feedback</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Mst is an innovative e-learning company dedicated to providing high-quality courses for IT students. Our mission is to empower learners with the skills and knowledge they need to succeed in the rapidly changing tech landscape.</p>
+    </section>
+
+    <section id="courses">
+        <h2>Courses Offered</h2>
+        
+        <div class="course">
+            <img src="WD.png" alt="Web Development">
+            <div class="course-info">
+                <h3>Web Development</h3>
+                <p>Duration: 3 months</p>
+                <p>Job Scope: Frontend/Backend Developer</p>
+                <p>Fee: ₹30,000</p>
+            </div>
+        </div>
+
+        <div class="course">
+            <img src="DS.png" alt="Data Science">
+            <div class="course-info">
+                <h3>Data Science</h3>
+                <p>Duration: 4 months</p>
+                <p>Job Scope: Data Analyst/Scientist</p>
+                <p>Fee: ₹40,000</p>
+            </div>
+        </div>
+
+        <div class="course">
+            <img src="CS.png" alt="Cyber Security">
+            <div class="course-info">
+                <h3>Cyber Security</h3>
+                <p>Duration: 5 months</p>
+                <p>Job Scope: Security Analyst</p>
+                <p>Fee: ₹50,000</p>
+            </div>
+        </div>
+
+        <div class="course">
+            <img src="ML.png" alt="Machine Learning">
+            <div class="course-info">
+                <h3>Machine Learning</h3>
+                <p>Duration: 6 months</p>
+                <p>Job Scope: ML Engineer</p>
+                <p>Fee: ₹45,000</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="feedback">
+        <h2>Feedback from Students</h2>
+        <p>"The Web Development course at Mst was fantastic! The instructors were knowledgeable and supportive." - Ravi Kumar</p>
+        <p>"I landed my dream job as a Data Scientist after completing the Data Science course. Highly recommended!" - Sneha Patel</p>
+        <p>"Mst's Cyber Security course provided me with essential skills that are in high demand." - Arjun Singh</p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Mst E-Learning. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
+
