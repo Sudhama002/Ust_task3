@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Inventory Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007BFF;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        label, input, select {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .product-list {
+            margin-top: 20px;
+        }
+        .product-item {
+            background-color: #f1f1f1;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .search-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        .search-container input {
+            flex: 1;
+            padding: 5px;
+        }
+        .search-container button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Product Inventory Management</h1>
+        
+        <form id="productForm">
+            <label for="name">Product Name:</label>
+            <input type="text" id="name" required>
+            
+            <label for="price">Price (INR):</label>
+            <input type="number" id="price" required>
+            
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" required>
+            
+            <label for="category">Category:</label>
+            <input type="text" id="category" required>
+            
+            <button type="button" onclick="addProduct()">Add Product</button>
+        </form>
+        
+        <div class="search-container">
+            <input type="text" id="searchKeyword" placeholder="Search product...">
+            <button type="button" onclick="searchProduct()">Search</button>
+        </div>
+        
+        <div class="product-list" id="productList"></div>
+    </div>
+
+    <script>
+        // Array to hold inventory
+        const inventory = [];
+
+        // Define Product Constructor
+        function Product(name, price, quantity, category) {
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+            this.category = category;
+        }
+
+        // Function to add a new product
+        function addProduct() {
+            const name = document.getElementById('name').value;
+            const price = parseFloat(document.getElementById('price').value);
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const category = document.getElementById('category').value;
+
+            // Validate data types and conditions
+            if (isNaN(price) || price < 0) {
+                alert("Please enter a valid price.");
+                return;
+            }
+            if (isNaN(quantity) || quantity < 0) {
+                alert("Please enter a valid quantity.");
+                return;
+            }
+
+            const newProduct = new Product(name, price, quantity, category);
+            inventory.push(newProduct);
+            displayProducts();
+        }
+
+        // Function to display products in inventory
+        function displayProducts() {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+            inventory.forEach((product, index) => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'product-item';
+                productDiv.innerHTML = `
+                    <strong>Name:</strong> ${product.name} <br>
+                    <strong>Price:</strong> ₹${product.price} <br>
+                    <strong>Quantity:</strong> ${product.quantity} <br>
+                    <strong>Category:</strong> ${product.category} <br>
+                    <strong>Availability:</strong> ${product.quantity > 0 ? 'In Stock' : 'Out of Stock'}
+                `;
+                productList.appendChild(productDiv);
+            });
+        }
+
+        // Function to search for products based on keywords
+        function searchProduct() {
+            const keyword = document.getElementById('searchKeyword').value.toLowerCase();
+            const searchResults = inventory.filter(product => 
+                product.name.toLowerCase().includes(keyword) ||
+                product.category.toLowerCase().includes(keyword)
+            );
+            
+            displaySearchResults(searchResults);
+        }
+
+        // Function to display search results
+        function displaySearchResults(results) {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+            if (results.length === 0) {
+                productList.innerHTML = '<p>No products found.</p>';
+                return;
+            }
+            results.forEach(product => {
+                const productDiv = document.createElement('div');
+                productDiv.className = 'product-item';
+                productDiv.innerHTML = `
+                    <strong>Name:</strong> ${product.name} <br>
+                    <strong>Price:</strong> ₹${product.price} <br>
+                    <strong>Quantity:</strong> ${product.quantity} <br>
+                    <strong>Category:</strong> ${product.category} <br>
+                    <strong>Availability:</strong> ${product.quantity > 0 ? 'In Stock' : 'Out of Stock'}
+                `;
+                productList.appendChild(productDiv);
+            });
+        }
+    </script>
+</body>
+</html>
